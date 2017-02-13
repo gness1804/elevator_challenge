@@ -15,7 +15,7 @@ describe('Elevator', function() {
   const brittany = new Person(
     {
       name: "Brittany",
-      currentFloor: 6,
+      currentFloor: 0,
     }
   )
 
@@ -23,14 +23,25 @@ describe('Elevator', function() {
     elevator.reset();
   });
 
-  it('should know if the person is above you or below you', () => {
+  it('should know if the person is above you', () => {
 
     elevator.requestFloor({
       requestor: alex,
       desiredFloor: 5}
     )
 
-    assert.strictEqual(elevator.personInRelationToElevator, 'above', 'Alex is above you.');
+    assert.strictEqual(elevator.personIsAboveYou, true, 'Alex is above you.');
+
+  });
+
+  xit('should know if the person is on the same floor', () => {
+
+    elevator.requestFloor({
+      requestor: brittany,
+      desiredFloor: 5}
+    )
+
+    assert.strictEqual(elevator.personInRelationToElevator, 'same', 'Brittany is on the same floor as you.');
 
   });
 

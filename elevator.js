@@ -7,58 +7,25 @@ export default class Elevator {
     this.requests = [];
     this.currentRiders = [];
     this.state = 'idle';
-    this.personInRelationToElevator = '';
+    this.personIsAboveYou = false;
+    this.personIsBelowYou = false;
+    this.youAreOnTheSameFloor = false;
     this.floorsToGetPerson = null,
     this.floorsToTakePerson = null;
   }
 
   requestFloor(options){
-    let origCurrentFloor = this.currentFloor;
-    let personCurrentFloor = options.requestor.currentFloor;
-    let personDesiredFloor = options.desiredFloor
-    // this.personIsAboveYou = personCurrentFloor > origCurrentFloor
-    // this.personIsBelowYou = origCurrentFloor > personCurrentFloor
-    // this.youAreOnTheSameFloor = origCurrentFloor === personCurrentFloor
+    const that = this;
 
-    this.currentFloor = personDesiredFloor;
-    this.state = 'idle';
+    console.log('Alex floor', options.requestor.currentFloor)
+    console.log('your floor', this.currentFloor)
 
-    if (personCurrentFloor > origCurrentFloor) {
-      this.personInRelationToElevator = 'above'
-    } else if (origCurrentFloor < personCurrentFloor) {
-      this.personInRelationToElevator = 'below'
-    } else {
-      this.personInRelationToElevator = 'same'
+
+    if (options.requestor.currentFloor > this.currentFloor) {
+      that.personIsAboveYou = true
     }
 
-    //find how many stops you have to make
-
-    // if (youAreOnTheSameFloor) {
-    //   this.stopsMade = 1;
-    // } else {
-    //   this.stopsMade = 2;
-    // }
-    //
-    // //find floorsToGetPerson
-    //
-    // if (personIsBelowYou) {
-    //   floorsToGetPerson = origCurrentFloor - personCurrentFloor
-    // } else if (personIsAboveYou) {
-    //   floorsToGetPerson = personCurrentFloor - origCurrentFloor
-    // } else {
-    //   floorsToGetPerson = 0;
-    // }
-    //
-    // //find floorsToTakePerson
-    //
-    // if (personCurrentFloor > personDesiredFloor) {
-    //   floorsToTakePerson = personCurrentFloor - personDesiredFloor
-    // } else {
-    //   floorsToTakePerson = personDesiredFloor - personCurrentFloor
-    // }
-    //
-    // //find floorsTraversed
-
+    console.log('personIsAboveYou', this.personIsAboveYou)
 
 
   }
