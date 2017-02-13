@@ -15,6 +15,8 @@ export default class Elevator {
   requestFloor(options){
     const that = this;
 
+    console.log(options.requestor.currentFloor)
+
     if (options.requestor.currentFloor > this.currentFloor) {
       that.whereIsThePerson = 'above you'
     } else if (options.requestor.currentFloor < this.currentFloor) {

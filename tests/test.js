@@ -8,16 +8,21 @@ const Person = require('../person').default
 
 describe('Elevator', function() {
   const elevator = new Elevator()
-  const alex = new Person({
-    name: "Alex",
-    currentFloor: 2}
-  )
-  const brittany = new Person(
+  const alex = new Person(
     {
-      name: "Brittany",
-      currentFloor: 0,
+    name: "Alex",
+    currentFloor: 2,
     }
   )
+
+  const brittany = new Person(
+    {
+    name: "Brittany",
+    currentFloor: -1,
+    }
+  )
+
+  console.log(brittany)
 
   afterEach(function() {
     elevator.reset();
@@ -34,25 +39,14 @@ describe('Elevator', function() {
 
   });
 
-  it('should know if the person is on the same floor', () => {
-
-    elevator.requestFloor({
-      requestor: alex,
-      desiredFloor: 5}
-    )
-
-    assert.strictEqual(elevator.whereIsThePerson, 'above you', 'Alex is above you.');
-
-  });
-
-  xit('should know if the person is on the same floor', () => {
+  it('should know if the person is below you', () => {
 
     elevator.requestFloor({
       requestor: brittany,
-      desiredFloor: 5}
+      desiredFloor: 1}
     )
 
-    assert.strictEqual(elevator.whereIsThePerson, 'same floor', 'Brittany is on the same floor.');
+    assert.strictEqual(elevator.whereIsThePerson, 'below you', 'Brittany is below you.');
 
   });
 
