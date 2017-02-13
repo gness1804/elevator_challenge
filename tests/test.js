@@ -14,7 +14,7 @@ describe('Elevator', function() {
     elevator.reset();
   });
 
-  xit('should bring a rider to a floor above their current floor', () => {
+  it('should bring a rider to a floor above their current floor', () => {
     // Alex requests the elevator to take him from 2 to 5
     elevator.requestFloor(alex, 5)
 

@@ -1,8 +1,13 @@
 export default class Person {
-  constructor() {
-    this.name = '';
-    this.currentFloor = null;
-    this.requestedFloor = null;
-    this.weight = null;
+  constructor(options) {
+    this.name = options.name || '';
+    this.currentFloor = options.currentFloor || null;
+    this.requestedFloor = options.requestedFloor || null;
+    this.weight = options.weight || null;
   }
+
+  requestFloor(options){
+
+  }
+
 }
