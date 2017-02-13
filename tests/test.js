@@ -22,8 +22,6 @@ describe('Elevator', function() {
     }
   )
 
-  console.log(brittany)
-
   afterEach(function() {
     elevator.reset();
   });
@@ -47,6 +45,17 @@ describe('Elevator', function() {
     )
 
     assert.strictEqual(elevator.whereIsThePerson, 'below you', 'Brittany is below you.');
+
+  });
+
+  it('should correctly calculate the floors needed to traverse to get the person', () => {
+
+    elevator.requestFloor({
+      requestor: alex,
+      desiredFloor: 5}
+    )
+
+    assert.strictEqual(this.floorsToGetPerson, 2, 'Need to travel 2 floors to get Alex');
 
   });
 

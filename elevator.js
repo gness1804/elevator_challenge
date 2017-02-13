@@ -12,19 +12,25 @@ export default class Elevator {
     this.floorsToTakePerson = null;
   }
 
-  requestFloor(options){
+  findCurrentFloor(options) {
     const that = this;
-
-    console.log(options.requestor.currentFloor)
-
-    if (options.requestor.currentFloor > this.currentFloor) {
+    if (options.requestor.currentFloor > that.currentFloor) {
       that.whereIsThePerson = 'above you'
-    } else if (options.requestor.currentFloor < this.currentFloor) {
+    } else if (options.requestor.currentFloor < that.currentFloor) {
       that.whereIsThePerson = 'below you'
-    } else if (options.requestor.currentFloor === this.currentFloor) {
+    } else if (options.requestor.currentFloor === that.currentFloor) {
       that.whereIsThePerson = 'same floor'
     } else {
       throw new Error('There is an error.')
+    }
+  }
+
+  requestFloor(options){
+    const that = this;
+    this.findCurrentFloor(options)
+
+    if (that.whereIsThePerson === 'above you') {
+      that.floorsToGetPerson = options.requestor.currentFloor - that.currentFloor
     }
 
   }
