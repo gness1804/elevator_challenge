@@ -1,17 +1,21 @@
 export default class Elevator {
   constructor(options) {
     this.currentFloor = 0;
-    // this.dropOffFloor = options.dropOffFloor || null;
-    // this.floorsTraversed = options.floorsTraversed || 0;
-    // this.stopsMade = options.stopsMade || 0;
-    // this.requests = options.requests || [];
-    // this.currentRiders = options.currentRiders || [];
-    // this.status = options.status || 'idle';
-    // this.direction = options.direction || '';
+    this.dropOffFloor = null;
+    this.floorsTraversed = 0;
+    this.stopsMade = 0;
+    this.requests = [];
+    this.currentRiders = [];
+    this.state = 'idle';
+    this.direction = '';
   }
 
   requestFloor(options){
+    let origCurrentFloor = this.currentFloor;
     this.currentFloor = options.desiredFloor;
+    this.state = 'idle';
+    this.stopsMade = 2;
+    this.floorsTraversed = options.desiredFloor - origCurrentFloor;
   }
 
   reset() {

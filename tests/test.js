@@ -29,9 +29,9 @@ describe('Elevator', function() {
     // Assert the current status of the elevator is idle after drop off
     assert.equal(elevator.state, 'idle')
     // Assert the total number of stops is 2 after drop off
-    assert.equal(elevator.stops, 2)
+    assert.equal(elevator.stopsMade, 2)
     // Assert the total number of floors traversed
-    assert.equal(elevator.floors, 5)
+    assert.equal(elevator.floorsTraversed, 5)
   });
 
   xit('should bring a rider to a floor below their current floor', () => {
