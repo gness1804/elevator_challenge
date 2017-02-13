@@ -17,6 +17,12 @@ export default class Elevator {
 
     if (options.requestor.currentFloor > this.currentFloor) {
       that.whereIsThePerson = 'above you'
+    } else if (options.requestor.currentFloor < this.currentFloor) {
+      that.whereIsThePerson = 'below you'
+    } else if (options.requestor.currentFloor === this.currentFloor) {
+      that.whereIsThePerson = 'same floor'
+    } else {
+      throw new Error('There is an error.')
     }
 
   }
