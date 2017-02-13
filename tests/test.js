@@ -12,14 +12,26 @@ describe('Elevator', function() {
     name: "Alex",
     currentFloor: 2}
   )
+  const brittany = new Person(
+    {
+      name: "Brittany",
+      currentFloor: 6,
+    }
+  )
 
   afterEach(function() {
     elevator.reset();
   });
 
-  it('', () => {
+  it('should know if the person is above you or below you', () => {
 
-    assert.strictEqual('dogs', 'cats');
+    elevator.requestFloor({
+      requestor: alex,
+      desiredFloor: 5}
+    )
+
+    assert.strictEqual(elevator.personInRelationToElevator, 'above', 'Alex is above you.');
+
   });
 
   xit('should bring a rider to a floor above their current floor', () => {
