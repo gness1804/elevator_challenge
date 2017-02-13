@@ -3,5 +3,6 @@ export default class Person {
     this.name = '';
     this.currentFloor = null;
     this.requestedFloor = null;
+    this.weight = null;
   }
 }
