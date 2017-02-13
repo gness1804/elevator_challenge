@@ -7,9 +7,7 @@ export default class Elevator {
     this.requests = [];
     this.currentRiders = [];
     this.state = 'idle';
-    this.personIsAboveYou = false;
-    this.personIsBelowYou = false;
-    this.youAreOnTheSameFloor = false;
+    this.whereIsThePerson = 'above you';
     this.floorsToGetPerson = null,
     this.floorsToTakePerson = null;
   }
@@ -17,16 +15,9 @@ export default class Elevator {
   requestFloor(options){
     const that = this;
 
-    console.log('Alex floor', options.requestor.currentFloor)
-    console.log('your floor', this.currentFloor)
-
-
     if (options.requestor.currentFloor > this.currentFloor) {
-      that.personIsAboveYou = true
+      that.whereIsThePerson = 'above you'
     }
-
-    console.log('personIsAboveYou', this.personIsAboveYou)
-
 
   }
 

@@ -30,7 +30,7 @@ describe('Elevator', function() {
       desiredFloor: 5}
     )
 
-    assert.strictEqual(elevator.personIsAboveYou, true, 'Alex is above you.');
+    assert.strictEqual(elevator.whereIsThePerson, 'above you', 'Alex is above you.');
 
   });
 
