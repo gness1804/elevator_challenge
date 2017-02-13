@@ -12,10 +12,47 @@ export default class Elevator {
 
   requestFloor(options){
     let origCurrentFloor = this.currentFloor;
-    this.currentFloor = options.desiredFloor;
+    let floorsToGetPerson;
+    let floorsToTakePerson;
+    let personCurrentFloor = options.requestor.currentFloor;
+    let personDesiredFloor = options.desiredFloor
+    let personIsAboveYou = personCurrentFloor > origCurrentFloor
+    let personIsBelowYou = origCurrentFloor > personCurrentFloor
+    let youAreOnTheSameFloor = origCurrentFloor === personCurrentFloor
+
+    this.currentFloor = personDesiredFloor;
     this.state = 'idle';
-    this.stopsMade = 2;
-    this.floorsTraversed = options.desiredFloor - origCurrentFloor;
+
+    //find how many stops you have to make 
+
+    if (youAreOnTheSameFloor) {
+      this.stopsMade = 1;
+    } else {
+      this.stopsMade = 2;
+    }
+
+    //find floorsToGetPerson
+
+    if (personIsBelowYou) {
+      floorsToGetPerson = origCurrentFloor - personCurrentFloor
+    } else if (personIsAboveYou) {
+      floorsToGetPerson = personCurrentFloor - origCurrentFloor
+    } else {
+      floorsToGetPerson = 0;
+    }
+
+    //find floorsToTakePerson
+
+    if (personCurrentFloor > personDesiredFloor) {
+      floorsToTakePerson = personCurrentFloor - personDesiredFloor
+    } else {
+      floorsToTakePerson = personDesiredFloor - personCurrentFloor
+    }
+
+    //find floorsTraversed
+
+
+
   }
 
   reset() {
