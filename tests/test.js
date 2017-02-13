@@ -8,7 +8,10 @@ const Person = require('../person').default
 
 describe('Elevator', function() {
   const elevator = new Elevator()
-  const alex = new Person("Alex", 2)
+  const alex = new Person({
+    name: "Alex",
+    currentFloor: 2}
+  )
 
   afterEach(function() {
     elevator.reset();
@@ -16,7 +19,10 @@ describe('Elevator', function() {
 
   it('should bring a rider to a floor above their current floor', () => {
     // Alex requests the elevator to take him from 2 to 5
-    elevator.requestFloor(alex, 5)
+    elevator.requestFloor({
+      requestor: alex,
+      desiredFloor: 5}
+    )
 
     // Assert the current floor of the elevator is the drop off floor
     assert.equal(elevator.currentFloor, 5)

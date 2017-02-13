@@ -6,8 +6,4 @@ export default class Person {
     this.weight = options.weight || null;
   }
 
-  requestFloor(options){
-
-  }
-
 }
