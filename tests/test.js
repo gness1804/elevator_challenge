@@ -206,6 +206,8 @@ describe('Elevator', function() {
 
     assert.strictEqual(elevator.requests, 2);
 
+    assert.strictEqual(elevator.currentSimultaneousRiders, 1);
+
   });
 
 });

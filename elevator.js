@@ -4,7 +4,7 @@ export default class Elevator {
     this.dropOffFloor = null;
     this.floorsTraversed = 0;
     this.stopsMade = 0;
-    this.currentSimultaneousRiders = [];
+    this.currentSimultaneousRiders = 0;
     this.riderQueue = [];
     this.requests = 0;
     this.state = 'idle';
@@ -71,7 +71,6 @@ export default class Elevator {
   }
 
   requestFloor(options) {
-
     this.riderQueue.push({
       name: options.requestor.name,
       currentFloor: options.requestor.currentFloor,
@@ -79,6 +78,7 @@ export default class Elevator {
     })
 
     this.requests = this.riderQueue.length
+    this.currentSimultaneousRiders = 1
 
     this.findCurrentFloor(options)
     this.floorsToGetPerson = this.findOutHowManyFloorsToGetPerson(options)
