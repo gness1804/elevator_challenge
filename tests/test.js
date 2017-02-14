@@ -48,17 +48,6 @@ describe('Elevator', function() {
 
   });
 
-  it('should correctly calculate the floors needed to traverse to get the person', () => {
-
-    elevator.requestFloor({
-      requestor: alex,
-      desiredFloor: 5}
-    )
-
-    assert.strictEqual(this.floorsToGetPerson, 2, 'Need to travel 2 floors to get Alex');
-
-  });
-
   // xit('should bring a rider to a floor above their current floor', () => {
   //   // Alex requests the elevator to take him from 2 to 5
   //   elevator.requestFloor({

@@ -28,11 +28,13 @@ export default class Elevator {
   requestFloor(options){
     const that = this;
     this.findCurrentFloor(options)
+    let howManyFloorsToGetPerson;
 
-    if (that.whereIsThePerson === 'above you') {
-      that.floorsToGetPerson = options.requestor.currentFloor - that.currentFloor
+    if (options.requestor.currentFloor > that.currentFloor) {
+      howManyFloorsToGetPerson = options.requestor.currentFloor - that.currentFloor
     }
 
+    console.log(howManyFloorsToGetPerson)
   }
 
   reset() {
