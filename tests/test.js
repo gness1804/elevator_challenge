@@ -161,4 +161,20 @@ describe('Elevator', function() {
     assert.strictEqual(elevator.stopsMade, 4);
   });
 
+  it('should add each rider to the riderQueue', () => {
+
+    elevator.requestFloor({
+      requestor: alex,
+      desiredFloor: 1}
+    )
+
+    elevator.requestFloor({
+      requestor: meeka,
+      desiredFloor: 2,
+      }
+    )
+
+    assert.strictEqual(elevator.riderQueue.length, 2);
+  });
+
 });
