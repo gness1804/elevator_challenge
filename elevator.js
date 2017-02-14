@@ -8,7 +8,7 @@ export default class Elevator {
     this.currentRiders = [];
     this.state = 'idle';
     this.whereIsThePerson = 'above you';
-    this.floorsToGetPerson = null,
+    this.floorsToGetPerson = null;
     this.floorsToTakePerson = null;
     this.directionToGetPerson = '';
     this.directionToTakePerson = '';
