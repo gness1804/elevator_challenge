@@ -188,4 +188,19 @@ describe('Elevator', function() {
 
   });
 
+  it('should work properly when the first requestor goes up and the second also goes up', () => {
+
+    elevator.requestFloor({
+      requestor: alex,
+      desiredFloor: 6}
+    )
+
+    elevator.requestFloor({
+      requestor: brittany,
+      desiredFloor: 10}
+    )
+
+    assert.strictEqual(elevator.stopsMade, 4);
+  });
+
 });
