@@ -71,15 +71,12 @@ export default class Elevator {
   }
 
   requestFloor(options) {
-    const that = this
 
     this.riderQueue.push({
       name: options.requestor.name,
       currentFloor: options.requestor.currentFloor,
       desiredFloor: options.desiredFloor,
     })
-
-    // console.log(this.riderQueue)
 
     this.findCurrentFloor(options)
     this.floorsToGetPerson = this.findOutHowManyFloorsToGetPerson(options)
