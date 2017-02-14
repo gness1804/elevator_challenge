@@ -174,7 +174,16 @@ describe('Elevator', function() {
       }
     )
 
-    assert.strictEqual(elevator.riderQueue.length, 2);
+    assert.strictEqual(elevator.riderQueue.length, 2, 'the riderQueue length is 2');
+
+    assert.strictEqual(elevator.riderQueue[0].name, 'Alex');
+
+    assert.strictEqual(elevator.riderQueue[1].name, 'Meeka');
+
+    assert.strictEqual(elevator.riderQueue[1].desiredFloor, 2);
+
+    assert.strictEqual(elevator.riderQueue[0].currentFloor, 2);
+
   });
 
 });
