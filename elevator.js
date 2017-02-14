@@ -25,14 +25,25 @@ export default class Elevator {
     }
   }
 
+  findOutHowManyFloorsToGetPerson(options) {
+    const that = this
+
+    if (options.requestor.currentFloor > that.currentFloor) {
+      return options.requestor.currentFloor - that.currentFloor
+    } else if (options.requestor.currentFloor < that.currentFloor) {
+      return that.currentFloor - options.requestor.currentFloor
+    } else if (options.requestor.currentFloor === that.currentFloor) {
+      return 0
+    } else {
+      throw new Error('There is an error.')
+    }
+
+  }
+
   requestFloor(options){
     const that = this;
     this.findCurrentFloor(options)
-    let howManyFloorsToGetPerson;
-
-    if (options.requestor.currentFloor > that.currentFloor) {
-      howManyFloorsToGetPerson = options.requestor.currentFloor - that.currentFloor
-    }
+    let howManyFloorsToGetPerson = this.findOutHowManyFloorsToGetPerson(options)
 
     console.log(howManyFloorsToGetPerson)
   }
