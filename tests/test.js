@@ -232,4 +232,26 @@ describe('Elevator', function() {
 
   });
 
+  it('should work properly when the first requestor goes down and the second goes up', () => {
+
+    elevator.requestFloor({
+      requestor: alex,
+      desiredFloor: 0}
+    )
+
+    elevator.requestFloor({
+      requestor: meeka,
+      desiredFloor: 6}
+    )
+
+    assert.strictEqual(elevator.stopsMade, 4);
+
+    assert.strictEqual(elevator.floorsTraversed, 10);
+
+    assert.strictEqual(elevator.requests, 2);
+
+    assert.strictEqual(elevator.currentSimultaneousRiders, 1);
+
+  });
+
 });
