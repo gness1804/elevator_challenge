@@ -87,22 +87,33 @@ describe('Elevator', function() {
 
   });
 
-  // xit('should bring a rider to a floor above their current floor', () => {
-  //   // Alex requests the elevator to take him from 2 to 5
-  //   elevator.requestFloor({
-  //     requestor: alex,
-  //     desiredFloor: 5}
-  //   )
-  //
-  //   // Assert the current floor of the elevator is the drop off floor
-  //   assert.equal(elevator.currentFloor, 5)
-  //   // Assert the current status of the elevator is idle after drop off
-  //   assert.equal(elevator.state, 'idle')
-  //   // Assert the total number of stops is 2 after drop off
-  //   assert.equal(elevator.stopsMade, 2)
-  //   // Assert the total number of floors traversed
-  //   assert.equal(elevator.floorsTraversed, 5)
-  // });
+  it('should know how many floors to take the person', () => {
+
+    elevator.currentFloor = 1
+
+    assert.strictEqual(elevator.findOutHowManyFloorsToTakePerson({
+      requestor: meeka,
+      desiredFloor: 2,
+      }
+    ), 2);
+
+  });
+
+  xit('should bring a rider to a floor above their current floor', () => {
+
+    elevator.requestFloor({
+      requestor: alex,
+      desiredFloor: 5}
+    )
+
+    assert.equal(elevator.currentFloor, 5)
+
+    assert.equal(elevator.state, 'idle')
+
+    assert.equal(elevator.stopsMade, 2)
+    // Assert the total number of floors traversed
+    assert.equal(elevator.floorsTraversed, 5)
+  });
   //
   // xit('should bring a rider to a floor below their current floor', () => {
   //   // Alex requests the elevator to take him from 2 to 5

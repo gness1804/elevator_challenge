@@ -10,6 +10,8 @@ export default class Elevator {
     this.whereIsThePerson = 'above you';
     this.floorsToGetPerson = null,
     this.floorsToTakePerson = null;
+    this.directionToGetPerson = '';
+    this.directionToTakePerson = '';
   }
 
   findCurrentFloor(options) {
@@ -27,6 +29,7 @@ export default class Elevator {
 
   findOutHowManyFloorsToGetPerson(options) {
     const that = this
+
     if (options.requestor.currentFloor > that.currentFloor) {
       return options.requestor.currentFloor - that.currentFloor
     } else if (options.requestor.currentFloor < that.currentFloor) {
@@ -39,12 +42,48 @@ export default class Elevator {
 
   }
 
+  findOutHowManyFloorsToTakePerson(options) {
+    const that = this
+
+    //their current floor minus their desired floor or vice versa
+
+    if (options.desiredFloor > options.requestor.currentFloor) {
+      return options.desiredFloor - options.requestor.currentFloor
+    } else if (options.desiredFloor < options.requestor.currentFloor) {
+      return options.requestor.currentFloor - options.desiredFloor
+    } else {
+      throw new Error('There is an error.')
+    }
+
+
+  }
+
+  // findOutHowManyFloorsTraversed() {
+  //   const that = this
+  //   if () {
+  //
+  //   }
+  // }
+
+  findOutHowManyStopsMade(howManyFloorsToGetPerson){
+    const that = this
+
+    if (howManyFloorsToGetPerson > 0) {
+      return 2
+    } else {
+      return 1
+    }
+  }
+
   requestFloor(options){
     const that = this;
     this.findCurrentFloor(options)
-    let howManyFloorsToGetPerson = this.findOutHowManyFloorsToGetPerson(options)
-
-    // console.log(howManyFloorsToGetPerson)
+    const howManyFloorsToGetPerson = this.findOutHowManyFloorsToGetPerson(options)
+    this.floorsToTakePerson = this.findOutHowManyFloorsToTakePerson(options)
+    this.stopsMade = this.findOutHowManyStopsMade(howManyFloorsToGetPerson)
+    this.currentFloor = options.desiredFloor
+    this.state = 'idle'
+    // this.floorsTraversed = this.findOutHowManyFloorsTraversed()
   }
 
   reset() {
