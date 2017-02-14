@@ -22,6 +22,13 @@ describe('Elevator', function() {
     }
   )
 
+  const meeka = new Person(
+    {
+    name: "Meeka",
+    currentFloor: 4,
+    }
+  )
+
   afterEach(function() {
     elevator.reset();
   });
@@ -65,6 +72,18 @@ describe('Elevator', function() {
       desiredFloor: 1,
       }
     ), 1);
+
+  });
+
+  it('should know how many floors needed to get the person when the person is on the same floor', () => {
+
+    elevator.currentFloor = 4
+
+    assert.strictEqual(elevator.findOutHowManyFloorsToGetPerson({
+      requestor: meeka,
+      desiredFloor: 2,
+      }
+    ), 0);
 
   });
 
