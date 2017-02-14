@@ -56,7 +56,7 @@ export default class Elevator {
 
   }
 
-  findOutHowManyFloorsTraversed(options) {
+  findOutHowManyFloorsTraversed() {
     return this.floorsToGetPerson + this.floorsToTakePerson
   }
 
