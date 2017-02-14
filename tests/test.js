@@ -184,6 +184,8 @@ describe('Elevator', function() {
 
     assert.strictEqual(elevator.riderQueue[0].currentFloor, 2);
 
+    assert.strictEqual(elevator.floorsTraversed, 8);
+
   });
 
 });

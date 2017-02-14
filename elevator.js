@@ -56,7 +56,8 @@ export default class Elevator {
   }
 
   findOutHowManyFloorsTraversed() {
-    return this.floorsToGetPerson + this.floorsToTakePerson
+    const sum = this.floorsToGetPerson + this.floorsToTakePerson
+    this.floorsTraversed = this.floorsTraversed + sum
   }
 
   findOutHowManyStopsMade(howManyFloorsToGetPerson) {
@@ -86,7 +87,7 @@ export default class Elevator {
     this.findOutHowManyStopsMade(this.floorsToGetPerson)
     this.currentFloor = options.desiredFloor
     this.state = 'idle'
-    this.floorsTraversed = this.findOutHowManyFloorsTraversed(options)
+    this.findOutHowManyFloorsTraversed()
   }
 
   reset() {
