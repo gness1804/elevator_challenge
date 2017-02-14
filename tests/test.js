@@ -203,6 +203,9 @@ describe('Elevator', function() {
     assert.strictEqual(elevator.stopsMade, 4);
 
     assert.strictEqual(elevator.floorsTraversed, 24);
+
+    assert.strictEqual(elevator.requests, 2);
+
   });
 
 });
