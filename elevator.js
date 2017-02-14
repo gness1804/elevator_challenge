@@ -80,6 +80,8 @@ export default class Elevator {
     this.requests = this.riderQueue.length
     this.currentSimultaneousRiders = 1
 
+    
+
     this.findCurrentFloor(options)
     this.floorsToGetPerson = this.findOutHowManyFloorsToGetPerson(options)
     this.floorsToTakePerson = this.findOutHowManyFloorsToTakePerson(options)
