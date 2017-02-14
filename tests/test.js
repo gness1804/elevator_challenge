@@ -48,6 +48,18 @@ describe('Elevator', function() {
 
   });
 
+  it('should know how many floors needed to get the person', () => {
+
+    elevator.requestFloor({
+      requestor: alex,
+      desiredFloor: 5}
+    )
+
+    assert.strictEqual(elevator.findOutHowManyFloorsToGetPerson({
+      requestor: alex,
+      desiredFloor: 5}), 2);
+  });
+
   // xit('should bring a rider to a floor above their current floor', () => {
   //   // Alex requests the elevator to take him from 2 to 5
   //   elevator.requestFloor({

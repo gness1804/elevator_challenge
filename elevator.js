@@ -27,7 +27,6 @@ export default class Elevator {
 
   findOutHowManyFloorsToGetPerson(options) {
     const that = this
-
     if (options.requestor.currentFloor > that.currentFloor) {
       return options.requestor.currentFloor - that.currentFloor
     } else if (options.requestor.currentFloor < that.currentFloor) {
@@ -45,7 +44,7 @@ export default class Elevator {
     this.findCurrentFloor(options)
     let howManyFloorsToGetPerson = this.findOutHowManyFloorsToGetPerson(options)
 
-    console.log(howManyFloorsToGetPerson)
+    // console.log(howManyFloorsToGetPerson)
   }
 
   reset() {
