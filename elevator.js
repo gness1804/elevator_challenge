@@ -5,7 +5,8 @@ export default class Elevator {
     this.floorsTraversed = 0;
     this.stopsMade = 0;
     this.requests = [];
-    this.currentRiders = [];
+    this.currentSimultaneousRiders = [];
+    this.riderQueue = [];
     this.state = 'idle';
     this.whereIsThePerson = 'above you';
     this.floorsToGetPerson = null;
@@ -52,16 +53,13 @@ export default class Elevator {
     } else {
       throw new Error('There is an error.')
     }
-
-
   }
 
   findOutHowManyFloorsTraversed() {
     return this.floorsToGetPerson + this.floorsToTakePerson
   }
 
-  findOutHowManyStopsMade(howManyFloorsToGetPerson){
-    const that = this
+  findOutHowManyStopsMade(howManyFloorsToGetPerson) {
 
     if (howManyFloorsToGetPerson > 0) {
       return 2
@@ -70,8 +68,18 @@ export default class Elevator {
     }
   }
 
-  requestFloor(options){
-    const that = this;
+  requestFloor(options) {
+    const that = this
+    // console.log(options)
+
+    for (var key in options) {
+      if (options.hasOwnProperty(key)) {
+        that.riderQueue.push(key)
+      }
+    }
+
+    console.log(that.riderQueue)
+
     this.findCurrentFloor(options)
     this.floorsToGetPerson = this.findOutHowManyFloorsToGetPerson(options)
     this.floorsToTakePerson = this.findOutHowManyFloorsToTakePerson(options)

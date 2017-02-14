@@ -145,4 +145,22 @@ describe('Elevator', function() {
     assert.strictEqual(elevator.stopsMade, 1);
   });
 
+  it('should be able to pick up and drop off riders according to their order in the request cue', () => {
+
+    elevator.requestFloor({
+      requestor: alex,
+      desiredFloor: 1}
+    )
+
+    elevator.requestFloor({
+      requestor: meeka,
+      desiredFloor: 2,
+      }
+    )
+
+    // console.log(elevator.riderQueue)
+
+    assert.strictEqual('dogs', 'cats');
+  });
+
 });
