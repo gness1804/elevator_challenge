@@ -48,16 +48,24 @@ describe('Elevator', function() {
 
   });
 
-  it('should know how many floors needed to get the person', () => {
-
-    elevator.requestFloor({
-      requestor: alex,
-      desiredFloor: 5}
-    )
+  it('should know how many floors needed to get the person when the person is above you', () => {
 
     assert.strictEqual(elevator.findOutHowManyFloorsToGetPerson({
       requestor: alex,
-      desiredFloor: 5}), 2);
+      desiredFloor: 5,
+      }
+    ), 2);
+
+  });
+
+  it('should know how many floors needed to get the person when the person is below you', () => {
+
+    assert.strictEqual(elevator.findOutHowManyFloorsToGetPerson({
+      requestor: brittany,
+      desiredFloor: 1,
+      }
+    ), 1);
+
   });
 
   // xit('should bring a rider to a floor above their current floor', () => {
