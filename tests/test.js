@@ -133,4 +133,16 @@ describe('Elevator', function() {
     assert.equal(elevator.floorsTraversed, 3)
   });
 
+  it('should only make one stop of the person is on the same floor as the elevator\'s starting floor', () => {
+
+    elevator.currentFloor = 2
+
+    elevator.requestFloor({
+      requestor: alex,
+      desiredFloor: 1}
+    )
+
+    assert.strictEqual(elevator.stopsMade, 1);
+  });
+
 });
