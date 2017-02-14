@@ -99,7 +99,7 @@ describe('Elevator', function() {
 
   });
 
-  xit('should bring a rider to a floor above their current floor', () => {
+  it('should bring a rider to a floor above their current floor', () => {
 
     elevator.requestFloor({
       requestor: alex,

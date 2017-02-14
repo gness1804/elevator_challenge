@@ -45,8 +45,6 @@ export default class Elevator {
   findOutHowManyFloorsToTakePerson(options) {
     const that = this
 
-    //their current floor minus their desired floor or vice versa
-
     if (options.desiredFloor > options.requestor.currentFloor) {
       return options.desiredFloor - options.requestor.currentFloor
     } else if (options.desiredFloor < options.requestor.currentFloor) {
@@ -58,12 +56,9 @@ export default class Elevator {
 
   }
 
-  // findOutHowManyFloorsTraversed() {
-  //   const that = this
-  //   if () {
-  //
-  //   }
-  // }
+  findOutHowManyFloorsTraversed(options) {
+    return this.floorsToGetPerson + this.floorsToTakePerson
+  }
 
   findOutHowManyStopsMade(howManyFloorsToGetPerson){
     const that = this
@@ -78,12 +73,12 @@ export default class Elevator {
   requestFloor(options){
     const that = this;
     this.findCurrentFloor(options)
-    const howManyFloorsToGetPerson = this.findOutHowManyFloorsToGetPerson(options)
+    this.floorsToGetPerson = this.findOutHowManyFloorsToGetPerson(options)
     this.floorsToTakePerson = this.findOutHowManyFloorsToTakePerson(options)
-    this.stopsMade = this.findOutHowManyStopsMade(howManyFloorsToGetPerson)
+    this.stopsMade = this.findOutHowManyStopsMade(this.floorsToGetPerson)
     this.currentFloor = options.desiredFloor
     this.state = 'idle'
-    // this.floorsTraversed = this.findOutHowManyFloorsTraversed()
+    this.floorsTraversed = this.findOutHowManyFloorsTraversed(options)
   }
 
   reset() {
