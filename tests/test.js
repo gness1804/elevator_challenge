@@ -145,7 +145,7 @@ describe('Elevator', function() {
     assert.strictEqual(elevator.stopsMade, 1);
   });
 
-  it('should be able to pick up and drop off riders according to their order in the request cue', () => {
+  it('should be able to pick up and drop off riders according to their order in the request queue', () => {
 
     elevator.requestFloor({
       requestor: alex,
@@ -158,9 +158,7 @@ describe('Elevator', function() {
       }
     )
 
-    // console.log(elevator.riderQueue)
-
-    assert.strictEqual('dogs', 'cats');
+    assert.strictEqual(elevator.stopsMade, 4);
   });
 
 });

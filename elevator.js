@@ -60,30 +60,22 @@ export default class Elevator {
   }
 
   findOutHowManyStopsMade(howManyFloorsToGetPerson) {
+    const that = this
 
     if (howManyFloorsToGetPerson > 0) {
-      return 2
+      that.stopsMade += 2
     } else {
-      return 1
+      that.stopsMade += 1
     }
   }
 
   requestFloor(options) {
     const that = this
-    // console.log(options)
-
-    for (var key in options) {
-      if (options.hasOwnProperty(key)) {
-        that.riderQueue.push(key)
-      }
-    }
-
-    console.log(that.riderQueue)
 
     this.findCurrentFloor(options)
     this.floorsToGetPerson = this.findOutHowManyFloorsToGetPerson(options)
     this.floorsToTakePerson = this.findOutHowManyFloorsToTakePerson(options)
-    this.stopsMade = this.findOutHowManyStopsMade(this.floorsToGetPerson)
+    this.findOutHowManyStopsMade(this.floorsToGetPerson)
     this.currentFloor = options.desiredFloor
     this.state = 'idle'
     this.floorsTraversed = this.findOutHowManyFloorsTraversed(options)
