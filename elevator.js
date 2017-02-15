@@ -71,6 +71,7 @@ export default class Elevator {
   }
 
   requestFloor(options) {
+
     this.riderQueue.push({
       name: options.requestor.name,
       currentFloor: options.requestor.currentFloor,

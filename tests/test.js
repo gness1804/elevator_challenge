@@ -276,4 +276,9 @@ describe('Elevator', function() {
 
   });
 
+  it('elevator should return to lobby if there are no current riders or pickup requests and the time is before 12:00 pm', () => {
+
+    assert.strictEqual(elevator.currentFloor, 0);
+  });
+
 });
