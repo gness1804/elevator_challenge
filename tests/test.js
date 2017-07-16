@@ -159,6 +159,7 @@ describe('Elevator', function() {
     )
 
     assert.strictEqual(elevator.stopsMade, 4);
+    //test the order of array and pickups/dropoffs, not stops 
   });
 
   it('should add each rider to the riderQueue', () => {
